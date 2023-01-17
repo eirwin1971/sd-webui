@@ -18,17 +18,17 @@ cd stable-diffusion-inpainting/
 sudo -u ubuntu git lfs pull --include "sd-v1-5-inpainting.ckpt"
 sudo -u ubuntu git lfs install --force
 cd ..
-mv stable-diffusion-inpainting/sd-v1-5-inpainting.ckpt stable-diffusion-webui/models/Stable-diffusion/
+mv stable-diffusion-inpainting/sd-v1-5-inpainting.ckpt sd-webui/models/Stable-diffusion/
 rm -rf stable-diffusion-inpainting/
 
 # download the corresponding config file and move it also to the model directory (make sure the name matches the model name)
 wget https://github.com/runwayml/stable-diffusion/blob/main/configs/stable-diffusion/v1-inpainting-inference.yaml
-cp v1-inpainting-inference.yaml stable-diffusion-webui/models/Stable-diffusion/sd-v1-5-inpainting.yaml
+cp v1-inpainting-inference.yaml sd-webui/models/Stable-diffusion/sd-v1-5-inpainting.yaml
 
 
 # change ownership of the web UI so that a regular user can start the server
-sudo chown -R ubuntu:ubuntu stable-diffusion-webui/
+sudo chown -R ubuntu:ubuntu sd-webui/
 
 # start the server as user 'ubuntu'
-sudo -u ubuntu nohup bash stable-diffusion-webui/webui.sh --listen > log.txt
+sudo -u ubuntu nohup bash sd-webui/webui.sh --listen > log.txt
 
